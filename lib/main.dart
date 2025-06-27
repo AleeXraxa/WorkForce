@@ -1,4 +1,5 @@
 import 'package:workforce/Core/app_core.dart';
+import 'package:workforce/shared/bindings/initial_bindings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
+          title: 'TryUnity WorkForce',
+          initialBinding: InitialBinding(),
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,

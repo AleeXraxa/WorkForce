@@ -14,6 +14,8 @@ dependencies:
   # Packages
   flutter_screenutil: ^5.9.3
   get:
+  connectivity_plus: ^5.0.2
+  font_awesome_flutter: ^10.7.0
 
 dev_dependencies:
   flutter_test:

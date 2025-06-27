@@ -1,7 +1,4 @@
-import 'dart:async';
-
 import 'package:workforce/Core/app_core.dart';
-import 'package:workforce/Features/Authenticatoin/View/login.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -11,40 +8,68 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
+  final ConnectivityController connectionController =
+      Get.find<ConnectivityController>();
+
+  bool hasNavigated = false;
+  Timer? splashTimer;
+
   @override
   void initState() {
     super.initState();
-    navigate();
+
+    ever(connectionController.isConnected, (connected) {
+      if (connected == true && !hasNavigated) {
+        splashTimer = Timer(const Duration(seconds: 5), () {
+          hasNavigated = true;
+          Get.offAll(() => const Login());
+        });
+      } else {
+        // Internet disconnected → cancel navigation
+        splashTimer?.cancel();
+        hasNavigated = false;
+      }
+    });
   }
 
-  void navigate() async {
-    Timer(Duration(seconds: 3), () {
-      Get.offAll(() => Login());
-    });
+  @override
+  void dispose() {
+    splashTimer?.cancel();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Appcolors.screenBG,
-      body: Column(
-        children: [
-          Image.asset('assets/images/Logo.png'),
-          Text(
-            'TryUnity WorkForce',
-            style: AppTextStyles.heading1,
-          ),
-          SizedBox(height: 0.01.sh),
-          Text(
-            'Your WorkForce, Simplified',
-            style: AppTextStyles.smallBodyText,
-          ),
-          SizedBox(height: 0.3.sh),
-          Text(
-            'Powered by: TryUnity Solutions',
-            style: AppTextStyles.smallBodyText,
-          ),
-        ],
+      body: Obx(
+        () => connectionController.isConnected.value
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset('assets/images/Logo.png'),
+                  Text(
+                    'TryUnity WorkForce',
+                    style: AppTextStyles.heading1,
+                  ),
+                  SizedBox(height: 0.01.sh),
+                  Text(
+                    'Your WorkForce, Simplified',
+                    style: AppTextStyles.smallBodyText,
+                  ),
+                  SizedBox(height: 0.3.sh),
+                  Text(
+                    'Powered by: TryUnity Solutions',
+                    style: AppTextStyles.smallBodyText,
+                  ),
+                ],
+              )
+            : const Center(
+                child: Text(
+                  "No Internet ❌",
+                  style: TextStyle(fontSize: 18, color: Colors.red),
+                ),
+              ),
       ),
     );
   }
