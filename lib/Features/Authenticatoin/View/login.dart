@@ -1,7 +1,4 @@
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:workforce/Core/app_core.dart';
-import 'package:workforce/shared/controllers/pass_controller.dart';
-import 'package:workforce/shared/utils/app_validators.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -12,7 +9,8 @@ class Login extends StatefulWidget {
 
 class _Login extends State<Login> {
   final passController = Get.find<PassController>();
-  final TextEditingController controller = TextEditingController();
+  final authController = Get.find<AuthController>();
+
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -35,7 +33,7 @@ class _Login extends State<Login> {
                   children: [
                     CustomField(
                       labelText: 'Email',
-                      controller: controller,
+                      controller: authController.emailController,
                       validator: AppValidators.isEmail,
                       prefix: FontAwesomeIcons.solidEnvelope,
                     ),
@@ -43,7 +41,7 @@ class _Login extends State<Login> {
                     Obx(
                       () => CustomField(
                         labelText: 'Password',
-                        controller: controller,
+                        controller: authController.passController,
                         validator: AppValidators.isPassword,
                         prefix: FontAwesomeIcons.lock,
                         suffix: passController.isPasswordHidden.value
@@ -53,13 +51,21 @@ class _Login extends State<Login> {
                         ontap: passController.togglePasswordVisibility,
                       ),
                     ),
-                    ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            Get.snackbar('working', 'Valiedated');
-                          }
-                        },
-                        child: Text('submit')),
+                    SizedBox(height: 0.02.sh),
+                    PrimaryBtn(
+                      btnText: 'Login',
+                      onTap: () {
+                        if (_formKey.currentState!.validate()) {
+                          Get.snackbar('Working', 'Validated');
+                        } else {}
+                      },
+                      bgColor: Appcolors.primaryColor,
+                    ),
+                    SizedBox(height: 0.05.sh),
+                    Text(
+                      'Powered by: TryUnity Solutions',
+                      style: AppTextStyles.textfieldStyle,
+                    ),
                   ],
                 ),
               ),

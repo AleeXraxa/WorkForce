@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:workforce/Core/app_core.dart';
 
 class AppTextStyles {
@@ -25,5 +23,11 @@ class AppTextStyles {
     fontSize: 12.sp,
     fontFamily: 'Poppins',
     color: Appcolors.labelText,
+  );
+  static TextStyle primaryBtnText = TextStyle(
+    color: Colors.white,
+    fontSize: 14.sp,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w700,
   );
 }
