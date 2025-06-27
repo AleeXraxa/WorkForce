@@ -1,4 +1,3 @@
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:workforce/Core/app_core.dart';
 
 class CustomField extends StatelessWidget {

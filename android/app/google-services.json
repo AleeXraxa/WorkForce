@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "722603646978",
+    "project_id": "workforce-47344",
+    "storage_bucket": "workforce-47344.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722603646978:android:da6af7badeb9ca6ba5871b",
+        "android_client_info": {
+          "package_name": "com.example.workforce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBt80VBroW95n7Id-cwT7egG6yGPD0oYvM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
