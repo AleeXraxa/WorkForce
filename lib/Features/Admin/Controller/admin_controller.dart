@@ -56,6 +56,16 @@ class AdminController extends GetxController {
     }
   }
 
+  // Get all Data of user
+  Rxn<UserModel> currentUserData = Rxn<UserModel>();
+
+  Future<void> loadCurrentUser() async {
+    final user = await _adminService.getCurrentUserData();
+    if (user != null) {
+      currentUserData.value = user;
+    }
+  }
+
   @override
   void onClose() {
     usernameController.dispose();

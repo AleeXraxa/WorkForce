@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:workforce/Core/app_core.dart';
+import 'package:workforce/Features/bottomNavbar/navbar.dart';
 import 'package:workforce/firebase_options.dart';
 import 'package:workforce/shared/bindings/initial_bindings.dart';
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: Splash(),
+          home: RoleBasedNavBar(userRole: 'Admin'),
         );
       },
     );

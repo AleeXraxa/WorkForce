@@ -30,4 +30,18 @@ class AdminService {
       rethrow;
     }
   }
+
+  Future<UserModel?> getCurrentUserData() async {
+    final uid = _auth.currentUser?.uid;
+
+    if (uid == null) return null;
+
+    final doc = await _firestore.collection('users').doc(uid).get();
+
+    if (doc.exists) {
+      return UserModel.fromMap(doc.data()!, doc.id);
+    } else {
+      return null;
+    }
+  }
 }

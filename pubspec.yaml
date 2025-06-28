@@ -21,6 +21,7 @@ dependencies:
   cloud_firestore: ^5.6.9
   http: ^0.13.6
   intl: ^0.18.1
+  curved_navigation_bar: 
 
 dev_dependencies:
   flutter_test:

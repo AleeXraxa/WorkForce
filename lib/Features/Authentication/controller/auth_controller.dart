@@ -1,4 +1,5 @@
 import 'package:workforce/Core/app_core.dart';
+import 'package:workforce/Features/bottomNavbar/navbar.dart';
 import 'package:workforce/shared/utils/error.dart';
 
 class AuthController extends GetxController {
@@ -41,7 +42,7 @@ class AuthController extends GetxController {
           final role = userData['role'];
 
           if (role == 'Admin') {
-            Get.offAll(() => AddUser());
+            Get.offAll(() => RoleBasedNavBar(userRole: role));
           } else if (role == 'Employee') {
             Get.snackbar('Welcome', 'Employee');
           } else if (role == 'Client') {
