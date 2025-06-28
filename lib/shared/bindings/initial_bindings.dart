@@ -1,5 +1,4 @@
 import 'package:workforce/Core/app_core.dart';
-import 'package:workforce/Features/Admin/Controller/admin_controller.dart';
 
 class InitialBinding extends Bindings {
   @override

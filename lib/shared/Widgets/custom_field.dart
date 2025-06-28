@@ -9,6 +9,7 @@ class CustomField extends StatelessWidget {
   final IconData? suffix;
   final TextInputType type;
   final VoidCallback? ontap;
+  final String? prefixText;
 
   const CustomField({
     required this.labelText,
@@ -19,6 +20,7 @@ class CustomField extends StatelessWidget {
     this.isObscure = false,
     this.type = TextInputType.text,
     this.ontap,
+    this.prefixText,
     super.key,
   });
 
@@ -30,6 +32,7 @@ class CustomField extends StatelessWidget {
       obscureText: isObscure,
       validator: validator,
       decoration: InputDecoration(
+          prefixText: prefixText,
           prefixIcon: prefix != null
               ? Padding(
                   padding:

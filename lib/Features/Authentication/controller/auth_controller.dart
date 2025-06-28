@@ -7,6 +7,7 @@ class AuthController extends GetxController {
   final isLoading = false.obs;
 
   final AuthService _authService = AuthService();
+  final FirebaseFirestore _database = FirebaseFirestore.instance;
 
   void clearfields() {
     emailController.clear();
@@ -24,7 +25,31 @@ class AuthController extends GetxController {
 
       if (user != null) {
         if (user.emailVerified) {
-          Get.offAll(() => AddUser());
+          final userData =
+              await _database.collection('users').doc(user.uid).get();
+
+          if (!userData.exists) {
+            showAuthDialog(
+                title: 'User not Found',
+                subtitle: 'Your account is Blocked',
+                icon: FontAwesomeIcons.solidCircleXmark,
+                onConfirm: () => Get.back(),
+                btnText: 'Close');
+            return;
+          }
+
+          final role = userData['role'];
+
+          if (role == 'Admin') {
+            Get.offAll(() => AddUser());
+          } else if (role == 'Employee') {
+            Get.snackbar('Welcome', 'Employee');
+          } else if (role == 'Client') {
+            Get.snackbar('Welcome', 'Client');
+          } else {
+            Get.snackbar('Invalid Role', 'Invalid');
+          }
+
           clearfields();
         } else {
           showAuthDialog(
