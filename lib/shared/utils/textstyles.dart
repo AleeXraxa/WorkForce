@@ -26,7 +26,7 @@ class AppTextStyles {
   );
   static TextStyle primaryBtnText = TextStyle(
     color: Colors.white,
-    fontSize: 14.sp,
+    fontSize: 13.sp,
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w700,
   );

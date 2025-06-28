@@ -52,14 +52,19 @@ class _Login extends State<Login> {
                       ),
                     ),
                     SizedBox(height: 0.02.sh),
-                    PrimaryBtn(
-                      btnText: 'Login',
-                      onTap: () {
-                        if (_formKey.currentState!.validate()) {
-                          Get.snackbar('Working', 'Validated');
-                        } else {}
-                      },
-                      bgColor: Appcolors.primaryColor,
+                    Obx(
+                      () => authController.isLoading.value
+                          ? CircularProgressIndicator()
+                          : PrimaryBtn(
+                              btnText: 'Login',
+                              onTap: () {
+                                FocusScope.of(context).unfocus();
+                                if (_formKey.currentState!.validate()) {
+                                  authController.loginUser();
+                                } else {}
+                              },
+                              bgColor: Appcolors.primaryColor,
+                            ),
                     ),
                     SizedBox(height: 0.05.sh),
                     Text(

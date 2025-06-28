@@ -10,17 +10,18 @@ export 'package:get/get.dart';
 export 'dart:async';
 export 'package:connectivity_plus/connectivity_plus.dart';
 export 'package:font_awesome_flutter/font_awesome_flutter.dart';
+export 'package:firebase_auth/firebase_auth.dart';
 
 // Model
 
 // Views
 export 'package:workforce/splash.dart';
-export 'package:workforce/Features/Authenticatoin/View/login.dart';
+export 'package:workforce/Features/Authentication/View/login.dart';
 
 // Controller
 export 'package:workforce/shared/controllers/connectivity_controller.dart';
 export 'package:workforce/shared/controllers/pass_controller.dart';
-export 'package:workforce/Features/Authenticatoin/controller/auth_controller.dart';
+export 'package:workforce/Features/Authentication/controller/auth_controller.dart';
 
 // Custom Widgets
 export 'package:workforce/shared/Widgets/custom_field.dart';
