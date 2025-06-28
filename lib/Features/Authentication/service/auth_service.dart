@@ -1,6 +1,4 @@
-// lib/services/auth_service.dart
-
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:workforce/Core/app_core.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -14,6 +12,7 @@ class AuthService {
     final user = _auth.currentUser;
     if (user != null && !user.emailVerified) {
       await user.sendEmailVerification();
+      await user.reload();
     }
   }
 

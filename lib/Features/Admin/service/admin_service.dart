@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:workforce/Features/Admin/model/user_model.dart';
+import 'package:workforce/Core/app_core.dart';
 
 class AdminService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -14,8 +12,15 @@ class AdminService {
       );
 
       final uid = credential.user?.uid ?? '';
-
+      await credential.user?.sendEmailVerification();
       await _firestore.collection('users').doc(uid).set(user.toMap());
+
+      await EmailService.sendWelcomeEmail(
+        name: user.firstName,
+        email: user.email,
+        password: '${user.username}123',
+        role: user.role,
+      );
     } on FirebaseAuthException catch (e) {
       throw FirebaseAuthException(
         code: e.code,

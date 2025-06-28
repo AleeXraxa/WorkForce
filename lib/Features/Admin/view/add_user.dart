@@ -1,6 +1,4 @@
 import 'package:workforce/Core/app_core.dart';
-import 'package:workforce/Features/Admin/Controller/admin_controller.dart';
-import 'package:workforce/shared/Widgets/drop_down.dart';
 
 class AddUser extends StatefulWidget {
   const AddUser({super.key});
@@ -64,7 +62,7 @@ class AddUserState extends State<AddUser> {
                               onChanged: (val) {
                                 if (val != null) adminController.setGender(val);
                               },
-                              prefix: FontAwesomeIcons.userTag,
+                              prefix: FontAwesomeIcons.venusMars,
                             )),
                         SizedBox(height: 0.01.sh),
                         CustomField(
@@ -93,7 +91,7 @@ class AddUserState extends State<AddUser> {
                               onChanged: (val) {
                                 if (val != null) adminController.setRole(val);
                               },
-                              prefix: FontAwesomeIcons.userTag,
+                              prefix: FontAwesomeIcons.userGear,
                             )),
                         SizedBox(height: 0.01.sh),
                         CustomField(
@@ -103,14 +101,18 @@ class AddUserState extends State<AddUser> {
                               fieldName: "Date of Birth"),
                         ),
                         SizedBox(height: 0.01.sh),
-                        PrimaryBtn(
-                          btnText: 'Add New User',
-                          onTap: () {
-                            if (_formKey.currentState!.validate()) {
-                              adminController.addNewUser();
-                            }
-                          },
-                          bgColor: Appcolors.primaryColor,
+                        Obx(
+                          () => adminController.isLoading.value
+                              ? CircularProgressIndicator()
+                              : PrimaryBtn(
+                                  btnText: 'Add New User',
+                                  onTap: () {
+                                    if (_formKey.currentState!.validate()) {
+                                      adminController.addNewUser();
+                                    }
+                                  },
+                                  bgColor: Appcolors.primaryColor,
+                                ),
                         ),
                       ],
                     ))
