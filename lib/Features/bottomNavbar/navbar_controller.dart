@@ -13,7 +13,7 @@ class MainNavController extends GetxController {
               screen: AdminDashboard(),
               icon: const Icon(Icons.dashboard, color: Colors.white)),
           RoleBasedNavItem(
-              screen: AddUser(),
+              screen: AdminDashboard(),
               icon: const Icon(Icons.group, color: Colors.white)),
           RoleBasedNavItem(
               screen: AdminDashboard(),

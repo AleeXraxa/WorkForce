@@ -31,17 +31,20 @@ class AuthController extends GetxController {
 
           if (!userData.exists) {
             showAuthDialog(
-                title: 'User not Found',
-                subtitle: 'Your account is Blocked',
-                icon: FontAwesomeIcons.solidCircleXmark,
-                onConfirm: () => Get.back(),
-                btnText: 'Close');
+              title: 'User not Found',
+              subtitle: 'Your account is Blocked',
+              icon: FontAwesomeIcons.solidCircleXmark,
+              onConfirm: () => Get.back(),
+              btnText: 'Close',
+            );
             return;
           }
 
           final role = userData['role'];
 
           if (role == 'Admin') {
+            final adminController = Get.find<AdminController>();
+            await adminController.loadCurrentUser(); // 👈 Important
             Get.offAll(() => RoleBasedNavBar(userRole: role));
           } else if (role == 'Employee') {
             Get.snackbar('Welcome', 'Employee');

@@ -10,35 +10,35 @@ class StatCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 2,
-      mainAxisSpacing: 15,
-      crossAxisSpacing: 20,
-      childAspectRatio: 1.12,
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      children: [
-        StatCard(
-          icon: FontAwesomeIcons.userTie,
-          title: 'Total Employees',
-          count: controller.totalEmployees.value,
-        ),
-        StatCard(
-          icon: FontAwesomeIcons.peopleGroup,
-          title: 'Total Leads',
-          count: controller.totalEmployees.value,
-        ),
-        StatCard(
-          icon: FontAwesomeIcons.listCheck,
-          title: 'Pending Tasks',
-          count: controller.totalEmployees.value,
-        ),
-        StatCard(
-          icon: FontAwesomeIcons.briefcase,
-          title: 'Total Projects',
-          count: controller.totalEmployees.value,
-        ),
-      ],
-    );
+    return Obx(() => GridView.count(
+          crossAxisCount: 2,
+          mainAxisSpacing: 15,
+          crossAxisSpacing: 20,
+          childAspectRatio: 1.12,
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          children: [
+            StatCard(
+              icon: FontAwesomeIcons.userTie,
+              title: 'Total Employees',
+              count: controller.totalEmployees.value,
+            ),
+            StatCard(
+              icon: FontAwesomeIcons.peopleGroup,
+              title: 'Total Leads',
+              count: controller.totalEmployees.value,
+            ),
+            StatCard(
+              icon: FontAwesomeIcons.listCheck,
+              title: 'Pending Tasks',
+              count: controller.totalEmployees.value,
+            ),
+            StatCard(
+              icon: FontAwesomeIcons.briefcase,
+              title: 'Total Projects',
+              count: controller.totalEmployees.value,
+            ),
+          ],
+        ));
   }
 }

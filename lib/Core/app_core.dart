@@ -2,6 +2,7 @@
 export 'package:workforce/shared/utils/textstyles.dart';
 export 'package:workforce/shared/utils/appcolors.dart';
 export 'package:workforce/shared/utils/app_validators.dart';
+export 'package:workforce/shared/utils/error.dart';
 
 // Core Libraries
 export 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,7 +22,6 @@ export 'package:workforce/Features/bottomNavbar/navbar_model.dart';
 // Views
 export 'package:workforce/splash.dart';
 export 'package:workforce/Features/Authentication/View/login.dart';
-export 'package:workforce/Features/Admin/view/add_user.dart';
 export 'package:workforce/Features/Admin/view/dashboard.dart';
 
 // Controller

@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:workforce/Core/app_core.dart';
-import 'package:workforce/Features/bottomNavbar/navbar.dart';
 import 'package:workforce/firebase_options.dart';
 import 'package:workforce/shared/bindings/initial_bindings.dart';
 
