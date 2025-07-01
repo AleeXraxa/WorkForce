@@ -44,4 +44,12 @@ class AdminService {
       return null;
     }
   }
+
+  Future<int> getTotalEmployees() async {
+    final snapshot = await _firestore
+        .collection('users')
+        .where('role', isEqualTo: 'Employee')
+        .get();
+    return snapshot.docs.length;
+  }
 }

@@ -66,6 +66,18 @@ class AdminController extends GetxController {
     }
   }
 
+  RxInt totalEmployees = 0.obs;
+
+  Future<void> fetchDashboardStats() async {
+    try {
+      totalEmployees.value = await _adminService.getTotalEmployees();
+    } on FirebaseAuthException catch (e) {
+      ErrorUtils.handleFirebaseAuthError(e);
+    } on FirebaseException catch (e) {
+      ErrorUtils.handleFirestoreError(e);
+    } finally {}
+  }
+
   @override
   void onClose() {
     usernameController.dispose();

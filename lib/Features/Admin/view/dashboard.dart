@@ -14,6 +14,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
   void initState() {
     super.initState();
     controller.loadCurrentUser();
+    controller.fetchDashboardStats();
   }
 
   @override
@@ -23,7 +24,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
           child: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -31,6 +32,10 @@ class _AdminDashboardState extends State<AdminDashboard> {
                   final user = controller.currentUserData.value;
                   return Header(user: user);
                 }),
+                SizedBox(height: 0.03.sh),
+                Obx(
+                  () => StatCards(controller: controller),
+                )
               ],
             ),
           ),

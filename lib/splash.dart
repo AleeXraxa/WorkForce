@@ -25,7 +25,6 @@ class _SplashState extends State<Splash> {
           Get.offAll(() => const Login());
         });
       } else {
-        // Internet disconnected → cancel navigation
         splashTimer?.cancel();
         hasNavigated = false;
       }

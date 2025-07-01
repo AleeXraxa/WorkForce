@@ -41,6 +41,8 @@ export 'package:workforce/shared/Widgets/custom_field.dart';
 export 'package:workforce/shared/Widgets/primary_btn.dart';
 export 'package:workforce/shared/Widgets/drop_down.dart';
 export 'package:workforce/shared/Widgets/custom%20Dialogs/auth_dialog.dart';
+export 'package:workforce/shared/Widgets/stat_card.dart';
 
 // Admin Component
 export 'package:workforce/Features/Admin/components/header.dart';
+export 'package:workforce/Features/Admin/components/stat_cards.dart';
