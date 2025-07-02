@@ -1,5 +1,4 @@
 import 'package:workforce/Core/app_core.dart';
-import 'package:workforce/Features/Onboarding/View/onboarding.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
