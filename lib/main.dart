@@ -1,7 +1,4 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:workforce/Core/app_core.dart';
-import 'package:workforce/firebase_options.dart';
-import 'package:workforce/shared/bindings/initial_bindings.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +18,6 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'TryUnity WorkForce',
-          initialBinding: InitialBinding(),
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
