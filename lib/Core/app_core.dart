@@ -1,7 +1,7 @@
 // Model
 
 // View
-export 'package:workforce/splash.dart';
+export 'package:workforce/Features/Onboarding/View/splash.dart';
 
 // Controller
 
