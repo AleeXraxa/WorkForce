@@ -22,6 +22,8 @@ dependencies:
   http: ^0.13.6
   intl: ^0.18.1
   curved_navigation_bar: 
+  lottie: 
+  smooth_page_indicator: ^1.1.0
 
 dev_dependencies:
   flutter_test:
