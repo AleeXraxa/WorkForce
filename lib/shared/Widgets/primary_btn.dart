@@ -4,11 +4,13 @@ class PrimaryBtn extends StatelessWidget {
   final String text;
   final Color textColor;
   final Color bgColor;
+  final VoidCallback onTap;
   const PrimaryBtn({
     super.key,
     required this.text,
     required this.bgColor,
     required this.textColor,
+    required this.onTap,
   });
 
   @override
@@ -16,7 +18,7 @@ class PrimaryBtn extends StatelessWidget {
     return SizedBox(
       width: 0.7.sw,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onTap,
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical: 12.h),
           shape: RoundedRectangleBorder(

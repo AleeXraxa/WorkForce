@@ -30,4 +30,9 @@ class AppTextStyles {
     fontWeight: FontWeight.w600,
     fontFamily: 'Poppins',
   );
+  static TextStyle labelText = TextStyle(
+    fontSize: 12.sp,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w600,
+  );
 }
