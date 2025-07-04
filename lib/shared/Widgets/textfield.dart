@@ -4,11 +4,15 @@ class CustomTextField extends StatelessWidget {
   final String labelText;
   final String hintText;
   final IconData? suffix;
+  final bool isPass;
+  final VoidCallback? onSuffixTap;
   const CustomTextField({
     super.key,
     required this.labelText,
     required this.hintText,
     this.suffix,
+    this.isPass = false,
+    this.onSuffixTap,
   });
 
   @override
@@ -19,6 +23,7 @@ class CustomTextField extends StatelessWidget {
         Text(labelText, style: AppTextStyles.labelText),
         SizedBox(height: 0.01.sh),
         TextFormField(
+          obscureText: isPass,
           style: TextStyle(
             fontSize: 12.sp,
             fontFamily: 'Poppins',
@@ -33,7 +38,7 @@ class CustomTextField extends StatelessWidget {
             ),
             suffixIcon: suffix != null
                 ? IconButton(
-                    onPressed: () {},
+                    onPressed: onSuffixTap,
                     icon: FaIcon(suffix),
                   )
                 : null,

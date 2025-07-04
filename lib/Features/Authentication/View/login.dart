@@ -8,6 +8,7 @@ class Login extends StatefulWidget {
 }
 
 class LoginState extends State<Login> {
+  final passController = Get.find<PassController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,11 +75,15 @@ class LoginState extends State<Login> {
                           hintText: 'alee@gmail.com',
                         ),
                         SizedBox(height: 0.02.sh),
-                        CustomTextField(
-                          labelText: 'Password',
-                          hintText: '******',
-                          suffix: FontAwesomeIcons.solidEyeSlash,
-                        ),
+                        Obx(() => CustomTextField(
+                              labelText: 'Password',
+                              hintText: '******',
+                              isPass: passController.isPass.value,
+                              suffix: passController.isPass.value
+                                  ? FontAwesomeIcons.solidEyeSlash
+                                  : FontAwesomeIcons.solidEye,
+                              onSuffixTap: passController.showPass,
+                            )),
                         TextButton(
                             onPressed: () {
                               Get.off(() => SignUp());

@@ -9,6 +9,7 @@ export 'package:workforce/Features/Authentication/View/sign_up.dart';
 
 // Controller
 export 'package:workforce/Features/Onboarding/Controller/controller.dart';
+export 'package:workforce/shared/Controllers/pass_controller.dart';
 // Service
 
 // Component

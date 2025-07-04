@@ -8,6 +8,7 @@ class SignUp extends StatefulWidget {
 }
 
 class SignUpState extends State<SignUp> {
+  final passController = Get.find<PassController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,17 +78,25 @@ class SignUpState extends State<SignUp> {
                           hintText: 'alee@gmail.com',
                         ),
                         SizedBox(height: 0.02.sh),
-                        CustomTextField(
-                          labelText: 'Password',
-                          hintText: '******',
-                          suffix: FontAwesomeIcons.solidEyeSlash,
-                        ),
+                        Obx(() => CustomTextField(
+                              labelText: 'Password',
+                              hintText: '******',
+                              isPass: passController.isPass.value,
+                              suffix: passController.isPass.value
+                                  ? FontAwesomeIcons.solidEyeSlash
+                                  : FontAwesomeIcons.solidEye,
+                              onSuffixTap: passController.showPass,
+                            )),
                         SizedBox(height: 0.02.sh),
-                        CustomTextField(
-                          labelText: 'Confirm Password',
-                          hintText: '******',
-                          suffix: FontAwesomeIcons.solidEyeSlash,
-                        ),
+                        Obx(() => CustomTextField(
+                              labelText: 'Confirm Password',
+                              hintText: '******',
+                              isPass: passController.isCPass.value,
+                              suffix: passController.isCPass.value
+                                  ? FontAwesomeIcons.solidEyeSlash
+                                  : FontAwesomeIcons.solidEye,
+                              onSuffixTap: passController.showCpass,
+                            )),
                         SizedBox(height: 0.02.sh),
                         PrimaryBtn(
                           text: 'Create Account',
