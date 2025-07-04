@@ -21,10 +21,10 @@ class SocialBtn extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12.r),
+            borderRadius: BorderRadius.circular(35.r),
             side: BorderSide(color: Colors.grey.shade300),
           ),
-          padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 14.w),
+          padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 14.w),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -39,7 +39,7 @@ class SocialBtn extends StatelessWidget {
               text,
               style: TextStyle(
                 color: Colors.black87,
-                fontSize: 13.sp,
+                fontSize: 12.sp,
                 fontWeight: FontWeight.w600,
                 fontFamily: 'Poppins',
               ),

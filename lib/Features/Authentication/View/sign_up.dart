@@ -154,7 +154,7 @@ class SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                             CustomTextField(
                               controller: authController.emailController,
                               labelText: 'Email',
-                              hintText: 'alee@gmail.com',
+                              hintText: 'example@email.com',
                               validator: Validators.validateEmail,
                             ),
                             SizedBox(height: 0.02.sh),

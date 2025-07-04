@@ -1,4 +1,5 @@
 import 'package:workforce/Core/app_core.dart';
+import 'package:workforce/Features/Authentication/View/forgot_pass.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -149,7 +150,7 @@ class LoginState extends State<Login> with SingleTickerProviderStateMixin {
                             CustomTextField(
                               controller: authController.emailController,
                               labelText: 'Email',
-                              hintText: 'alee@gmail.com',
+                              hintText: 'example@email.com',
                               validator: Validators.validateEmail,
                             ),
                             SizedBox(height: 0.02.sh),
@@ -168,7 +169,7 @@ class LoginState extends State<Login> with SingleTickerProviderStateMixin {
                             ),
                             TextButton(
                               onPressed: () {
-                                // Navigate to Forgot Password
+                                Get.to(() => ForgotPassword());
                               },
                               child: Text(
                                 'Forgot Password',
