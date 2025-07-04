@@ -1,6 +1,4 @@
 import 'package:workforce/Core/app_core.dart';
-import 'package:workforce/Features/Authentication/View/login.dart';
-import 'package:workforce/Features/Authentication/View/sign_up.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -90,7 +88,7 @@ class _WelcomeState extends State<Welcome> with SingleTickerProviderStateMixin {
                   PrimaryBtn(
                     text: 'LOGIN',
                     textColor: Colors.white,
-                    bgColor: AppColors.primaryBtn,
+                    bgColor: AppColors.primaryColor,
                     onTap: () {
                       Get.to(() => Login());
                     },

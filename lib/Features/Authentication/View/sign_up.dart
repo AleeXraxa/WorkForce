@@ -1,5 +1,4 @@
 import 'package:workforce/Core/app_core.dart';
-import 'package:workforce/Features/Authentication/View/login.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -18,7 +17,7 @@ class SignUpState extends State<SignUp> {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xFF575cae), // Indigo
+              AppColors.primaryColor, // Indigo
               Color(0xff171b41), // Charcoal
             ],
             begin: Alignment.topCenter,
@@ -92,7 +91,7 @@ class SignUpState extends State<SignUp> {
                         SizedBox(height: 0.02.sh),
                         PrimaryBtn(
                           text: 'Create Account',
-                          bgColor: AppColors.primaryBtn,
+                          bgColor: AppColors.primaryColor,
                           textColor: Colors.white,
                           onTap: () {},
                         ),
@@ -125,60 +124,6 @@ class SignUpState extends State<SignUp> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class CustomTextField extends StatelessWidget {
-  final String labelText;
-  final String hintText;
-  final IconData? suffix;
-  const CustomTextField({
-    super.key,
-    required this.labelText,
-    required this.hintText,
-    this.suffix,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(labelText, style: AppTextStyles.labelText),
-        SizedBox(height: 0.01.sh),
-        TextFormField(
-          style: TextStyle(
-            fontSize: 12.sp,
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.w500,
-          ),
-          decoration: InputDecoration(
-            hintText: hintText,
-            hintStyle: TextStyle(
-              fontSize: 11.sp,
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.w500,
-            ),
-            suffixIcon: suffix != null
-                ? IconButton(
-                    onPressed: () {},
-                    icon: FaIcon(suffix),
-                  )
-                : null,
-            border: UnderlineInputBorder(),
-            enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: AppColors.primaryColor),
-            ),
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: AppColors.primaryColor, width: 2),
-            ),
-            errorBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.redAccent),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

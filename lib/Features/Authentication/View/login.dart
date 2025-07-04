@@ -1,5 +1,4 @@
 import 'package:workforce/Core/app_core.dart';
-import 'package:workforce/Features/Authentication/View/sign_up.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -18,8 +17,8 @@ class LoginState extends State<Login> {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xFF575cae), // Indigo
-              Color(0xff171b41), // Charcoal
+              AppColors.primaryColor,
+              Color(0xff171b41),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -67,6 +66,7 @@ class LoginState extends State<Login> {
                       EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
                   child: Form(
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         SizedBox(height: 0.02.sh),
                         CustomTextField(
@@ -79,13 +79,25 @@ class LoginState extends State<Login> {
                           hintText: '******',
                           suffix: FontAwesomeIcons.solidEyeSlash,
                         ),
+                        TextButton(
+                            onPressed: () {
+                              Get.off(() => SignUp());
+                            },
+                            child: Text(
+                              'Forgot Password',
+                              style: AppTextStyles.subtext.copyWith(
+                                color: AppColors.primaryColor,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            )),
                         SizedBox(height: 0.02.sh),
-                        SizedBox(height: 0.02.sh),
-                        PrimaryBtn(
-                          text: 'Login',
-                          bgColor: AppColors.primaryBtn,
-                          textColor: Colors.white,
-                          onTap: () {},
+                        Center(
+                          child: PrimaryBtn(
+                            text: 'Login',
+                            bgColor: AppColors.primaryColor,
+                            textColor: Colors.white,
+                            onTap: () {},
+                          ),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -116,60 +128,6 @@ class LoginState extends State<Login> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class CustomTextField extends StatelessWidget {
-  final String labelText;
-  final String hintText;
-  final IconData? suffix;
-  const CustomTextField({
-    super.key,
-    required this.labelText,
-    required this.hintText,
-    this.suffix,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(labelText, style: AppTextStyles.labelText),
-        SizedBox(height: 0.01.sh),
-        TextFormField(
-          style: TextStyle(
-            fontSize: 12.sp,
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.w500,
-          ),
-          decoration: InputDecoration(
-            hintText: hintText,
-            hintStyle: TextStyle(
-              fontSize: 11.sp,
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.w500,
-            ),
-            suffixIcon: suffix != null
-                ? IconButton(
-                    onPressed: () {},
-                    icon: FaIcon(suffix),
-                  )
-                : null,
-            border: UnderlineInputBorder(),
-            enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: AppColors.primaryColor),
-            ),
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: AppColors.primaryColor, width: 2),
-            ),
-            errorBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.redAccent),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

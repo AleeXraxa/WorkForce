@@ -4,6 +4,8 @@
 export 'package:workforce/Features/Onboarding/View/splash.dart';
 export 'package:workforce/Features/Authentication/View/welcome.dart';
 export 'package:workforce/Features/Onboarding/View/onboarding.dart';
+export 'package:workforce/Features/Authentication/View/login.dart';
+export 'package:workforce/Features/Authentication/View/sign_up.dart';
 
 // Controller
 export 'package:workforce/Features/Onboarding/Controller/controller.dart';
@@ -17,6 +19,7 @@ export 'package:workforce/shared/Widgets/secondary_btn.dart';
 export 'package:workforce/shared/Widgets/navigation_btn.dart';
 export 'package:workforce/shared/Widgets/social_btn.dart';
 export 'package:workforce/shared/Widgets/primary_btn.dart';
+export 'package:workforce/shared/Widgets/textfield.dart';
 
 // Utils
 export 'package:workforce/shared/utils/app_text_styles.dart';
