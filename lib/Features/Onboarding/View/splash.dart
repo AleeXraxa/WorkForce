@@ -41,12 +41,26 @@ class SplashState extends State<Splash> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: FadeTransition(
-          opacity: fadeIn,
-          child: Image.asset(
-            'assets/images/Logo_black.png',
-            width: 0.5.sw,
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFF575cae), // Dark Indigo Blue
+              Color(0xff171b41), // Almost Black (Charcoal)
+            ],
+          ),
+        ),
+        child: Center(
+          child: FadeTransition(
+            opacity: fadeIn,
+            child: Image.asset(
+              'assets/images/Logo.png',
+              width: 0.8.sw,
+            ),
           ),
         ),
       ),

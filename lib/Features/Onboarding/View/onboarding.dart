@@ -51,7 +51,7 @@ class _MainOnboardingState extends State<MainOnboarding>
                   text: 'Skip',
                   bg: AppColors.primaryColor,
                   onTap: () {
-                    Get.offAll(() => Login());
+                    Get.offAll(() => Welcome());
                   },
                 ),
               ),

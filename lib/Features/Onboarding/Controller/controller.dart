@@ -18,7 +18,7 @@ class OnboardingController extends GetxController {
       );
     } else {
       // Navigate to login/home
-      Get.offAll(() => Login());
+      Get.offAll(() => Welcome());
     }
   }
 
@@ -32,7 +32,7 @@ class OnboardingController extends GetxController {
   }
 
   void skip() {
-    Get.offAll(() => Login());
+    Get.offAll(() => Welcome());
   }
 
   @override
