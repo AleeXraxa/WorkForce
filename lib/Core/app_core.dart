@@ -10,6 +10,8 @@ export 'package:workforce/Features/Authentication/View/sign_up.dart';
 // Controller
 export 'package:workforce/Features/Onboarding/Controller/controller.dart';
 export 'package:workforce/shared/Controllers/pass_controller.dart';
+export 'package:workforce/Features/Authentication/Controller/auth_controller.dart';
+
 // Service
 
 // Component
@@ -26,6 +28,7 @@ export 'package:workforce/shared/Widgets/textfield.dart';
 export 'package:workforce/shared/utils/app_text_styles.dart';
 export 'package:workforce/shared/utils/app_colors.dart';
 export 'package:workforce/shared/Bindings/initial_binding.dart';
+export 'package:workforce/shared/utils/app_validators.dart';
 
 // Core Libraries
 export 'package:firebase_core/firebase_core.dart';

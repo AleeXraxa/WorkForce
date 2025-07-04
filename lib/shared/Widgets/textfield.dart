@@ -6,14 +6,17 @@ class CustomTextField extends StatelessWidget {
   final IconData? suffix;
   final bool isPass;
   final VoidCallback? onSuffixTap;
-  const CustomTextField({
-    super.key,
-    required this.labelText,
-    required this.hintText,
-    this.suffix,
-    this.isPass = false,
-    this.onSuffixTap,
-  });
+  final String? Function(String?)? validator;
+  final TextEditingController controller;
+  const CustomTextField(
+      {super.key,
+      required this.labelText,
+      required this.hintText,
+      this.suffix,
+      this.isPass = false,
+      this.onSuffixTap,
+      required this.validator,
+      required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +26,8 @@ class CustomTextField extends StatelessWidget {
         Text(labelText, style: AppTextStyles.labelText),
         SizedBox(height: 0.01.sh),
         TextFormField(
+          controller: controller,
+          validator: validator,
           obscureText: isPass,
           style: TextStyle(
             fontSize: 12.sp,

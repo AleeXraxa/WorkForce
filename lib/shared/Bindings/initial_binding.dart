@@ -4,6 +4,7 @@ class InitialBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => OnboardingController());
-    Get.lazyPut(() => PassController(), fenix: true);
+    Get.put(AuthController(), permanent: true);
+    Get.put(PassController(), permanent: true);
   }
 }
