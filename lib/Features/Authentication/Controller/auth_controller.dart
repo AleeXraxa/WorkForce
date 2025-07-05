@@ -1,5 +1,4 @@
 import 'package:workforce/Core/app_core.dart';
-import 'package:workforce/shared/Widgets/dialogs/success_dialog.dart';
 
 class AuthController extends GetxController {
   // Field Controllers
@@ -24,6 +23,7 @@ class AuthController extends GetxController {
 
       final email = emailController.text.trim();
       final pass = passController.text;
+      final username = usernameController.text.trim();
 
       UserCredential userCredential =
           await _authService.createUser(email: email, pass: pass);
@@ -32,17 +32,30 @@ class AuthController extends GetxController {
 
       if (user != null) {
         final userData = UserModel(
-            uid: user.uid,
-            username: usernameController.text.trim(),
-            email: email,
-            isEmailVerified: false,
-            role: 'Employee',
-            status: 'Pending');
+          uid: user.uid,
+          username: username,
+          email: email,
+          isEmailVerified: false,
+          role: 'Employee',
+          status: 'Pending',
+        );
         await _authService.saveUserToFirestore(userData);
       }
 
       showSuccessDialog(
-          'Account Created', 'Your account has been created successfully');
+        'Account Created',
+        'Your account has been created successfully',
+      );
+
+      final otpCode = OtpUtils.generateOtp();
+      final expiryTime = OtpUtils.formattedExpiryTime();
+
+      await EmailService.sendOtpEmail(
+        toName: username,
+        toEmail: email,
+        otpCode: otpCode,
+        expiryTime: expiryTime,
+      );
       clearFields();
     } catch (e) {
       FirebaseErrorHandler.handle(e);

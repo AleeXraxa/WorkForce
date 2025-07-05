@@ -16,6 +16,7 @@ export 'package:workforce/Features/Authentication/Controller/auth_controller.dar
 
 // Service
 export 'package:workforce/Features/Authentication/Service/auth_service.dart';
+export 'package:workforce/Features/Authentication/Service/email_service.dart';
 
 // Component
 export 'package:workforce/Features/Onboarding/component/onboarding_widget.dart';
@@ -26,6 +27,7 @@ export 'package:workforce/shared/Widgets/navigation_btn.dart';
 export 'package:workforce/shared/Widgets/social_btn.dart';
 export 'package:workforce/shared/Widgets/primary_btn.dart';
 export 'package:workforce/shared/Widgets/textfield.dart';
+export 'package:workforce/shared/Widgets/dialogs/success_dialog.dart';
 
 // Utils
 export 'package:workforce/shared/utils/app_text_styles.dart';
@@ -33,6 +35,7 @@ export 'package:workforce/shared/utils/app_colors.dart';
 export 'package:workforce/shared/utils/firebase_error.dart';
 export 'package:workforce/shared/Bindings/initial_binding.dart';
 export 'package:workforce/shared/utils/app_validators.dart';
+export 'package:workforce/Features/Authentication/Controller/otp_utils.dart';
 
 // Core Libraries
 export 'package:firebase_core/firebase_core.dart';

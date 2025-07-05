@@ -102,8 +102,6 @@ class SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                 ),
               ),
               SizedBox(height: 0.01.sh),
-
-              // ✅ Animated Header
               FadeTransition(
                 opacity: _headerFade,
                 child: SlideTransition(
@@ -121,7 +119,6 @@ class SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                   ),
                 ),
               ),
-
               Container(
                 width: double.infinity,
                 height: 0.75.sh,
@@ -146,7 +143,7 @@ class SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                             CustomTextField(
                               controller: authController.usernameController,
                               labelText: 'Username',
-                              hintText: 'Alee',
+                              hintText: 'username',
                               validator: Validators.validateUsername,
                             ),
                             SizedBox(height: 0.02.sh),
