@@ -122,7 +122,6 @@ class SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                 ),
               ),
 
-              // ✅ Animated Form Section
               Container(
                 width: double.infinity,
                 height: 0.75.sh,
@@ -184,15 +183,24 @@ class SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                                           authController.passController.text),
                                 )),
                             SizedBox(height: 0.02.sh),
-                            PrimaryBtn(
-                              text: 'Create Account',
-                              bgColor: AppColors.primaryColor,
-                              textColor: Colors.white,
-                              onTap: () {
-                                if (_formKey.currentState!.validate()) {
-                                  Get.snackbar('Success', 'Validated');
-                                }
-                              },
+                            Obx(
+                              () => authController.isLoading.value
+                                  ? Lottie.asset(
+                                      'assets/animations/newloader.json',
+                                      height: 100.h,
+                                      width: 100.w,
+                                      fit: BoxFit.contain,
+                                    )
+                                  : PrimaryBtn(
+                                      text: 'Create Account',
+                                      bgColor: AppColors.primaryColor,
+                                      textColor: Colors.white,
+                                      onTap: () {
+                                        if (_formKey.currentState!.validate()) {
+                                          authController.registerUser();
+                                        }
+                                      },
+                                    ),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
