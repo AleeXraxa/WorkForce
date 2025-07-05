@@ -9,6 +9,8 @@ export 'package:workforce/Features/Onboarding/View/onboarding.dart';
 export 'package:workforce/Features/Authentication/View/login.dart';
 export 'package:workforce/Features/Authentication/View/sign_up.dart';
 export 'package:workforce/Features/Authentication/View/forgot_pass.dart';
+export 'package:workforce/Features/Authentication/View/verification.dart';
+export 'package:workforce/Features/Admin/View/admin_dashboard.dart';
 
 // Controller
 export 'package:workforce/Features/Onboarding/Controller/controller.dart';

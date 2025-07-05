@@ -1,5 +1,4 @@
 import 'package:workforce/Core/app_core.dart';
-import 'package:workforce/Features/Authentication/View/verification.dart';
 
 class AuthController extends GetxController {
   // Field Controllers
@@ -135,7 +134,7 @@ class AuthController extends GetxController {
 
       // 5. Navigate Based on Role
       if (role == 'Admin') {
-        // Get.offAll(() => AdminDashboard());
+        Get.offAll(() => AdminDashboard());
       } else if (role == 'HR') {
         // Get.offAll(() => HRDashboard());
       } else if (role == 'Client') {
@@ -149,6 +148,11 @@ class AuthController extends GetxController {
     } finally {
       isLoading.value = false;
     }
+  }
+
+  void logOut() async {
+    await FirebaseAuth.instance.signOut();
+    Get.offAll(() => Login());
   }
 
   @override

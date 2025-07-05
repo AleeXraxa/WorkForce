@@ -176,15 +176,25 @@ class LoginState extends State<Login> with SingleTickerProviderStateMixin {
                             ),
                             SizedBox(height: 0.02.sh),
                             Center(
-                              child: PrimaryBtn(
-                                text: 'Login',
-                                bgColor: AppColors.primaryColor,
-                                textColor: Colors.white,
-                                onTap: () {
-                                  if (_formKey.currentState!.validate()) {
-                                    authController.loginUser();
-                                  }
-                                },
+                              child: Obx(
+                                () => authController.isLoading.value
+                                    ? Lottie.asset(
+                                        'assets/animations/newloader.json',
+                                        height: 100.h,
+                                        width: 100.w,
+                                        fit: BoxFit.contain,
+                                      )
+                                    : PrimaryBtn(
+                                        text: 'Login',
+                                        bgColor: AppColors.primaryColor,
+                                        textColor: Colors.white,
+                                        onTap: () {
+                                          if (_formKey.currentState!
+                                              .validate()) {
+                                            authController.loginUser();
+                                          }
+                                        },
+                                      ),
                               ),
                             ),
                             Row(
