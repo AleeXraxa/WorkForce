@@ -11,4 +11,8 @@ class OtpUtils {
     final expiry = DateTime.now().add(Duration(minutes: minutes));
     return DateFormat('hh:mm a').format(expiry);
   }
+
+  static String formatDate(DateTime time) {
+    return DateFormat('hh:mm a').format(time);
+  }
 }

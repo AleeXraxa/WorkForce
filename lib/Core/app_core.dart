@@ -1,5 +1,6 @@
 // Model
 export 'package:workforce/Features/Authentication/Model/user_model.dart';
+export 'package:workforce/Features/Authentication/Model/otp_model.dart';
 
 // View
 export 'package:workforce/Features/Onboarding/View/splash.dart';
@@ -13,10 +14,12 @@ export 'package:workforce/Features/Authentication/View/forgot_pass.dart';
 export 'package:workforce/Features/Onboarding/Controller/controller.dart';
 export 'package:workforce/shared/Controllers/pass_controller.dart';
 export 'package:workforce/Features/Authentication/Controller/auth_controller.dart';
+export 'package:workforce/Features/Authentication/Controller/otp_controller.dart';
 
 // Service
 export 'package:workforce/Features/Authentication/Service/auth_service.dart';
 export 'package:workforce/Features/Authentication/Service/email_service.dart';
+export 'package:workforce/Features/Authentication/Service/otp_service.dart';
 
 // Component
 export 'package:workforce/Features/Onboarding/component/onboarding_widget.dart';
@@ -47,3 +50,5 @@ export 'package:lottie/lottie.dart';
 export 'package:font_awesome_flutter/font_awesome_flutter.dart';
 export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:firebase_auth/firebase_auth.dart';
+export 'package:pin_code_fields/pin_code_fields.dart';
+export 'package:cloud_firestore/cloud_firestore.dart';

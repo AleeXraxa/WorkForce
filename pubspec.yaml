@@ -24,6 +24,7 @@ dependencies:
   curved_navigation_bar: 
   lottie: 
   smooth_page_indicator: ^1.1.0
+  pin_code_fields: ^8.0.0
 
 dev_dependencies:
   flutter_test:

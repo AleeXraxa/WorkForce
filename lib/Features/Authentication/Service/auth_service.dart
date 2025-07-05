@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:workforce/Core/app_core.dart';
 
 class AuthService {

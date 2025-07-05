@@ -1,4 +1,5 @@
 import 'package:workforce/Core/app_core.dart';
+import 'package:workforce/Features/Authentication/View/verification.dart';
 
 class AuthController extends GetxController {
   // Field Controllers
@@ -15,6 +16,7 @@ class AuthController extends GetxController {
   }
 
   final AuthService _authService = AuthService();
+  final otpController = Get.find<OtpController>();
   final isLoading = false.obs;
 
   Future<void> registerUser() async {
@@ -44,18 +46,17 @@ class AuthController extends GetxController {
 
       showSuccessDialog(
         'Account Created',
-        'Your account has been created successfully',
+        'Please wait for the email verification',
       );
 
-      final otpCode = OtpUtils.generateOtp();
-      final expiryTime = OtpUtils.formattedExpiryTime();
+      await otpController.sendOtp(
+          uid: user!.uid, email: email, username: username);
+      Get.offAll(() => OtpVerificationScreen(), arguments: {
+        'uid': user.uid,
+        'username': username,
+        'email': email,
+      });
 
-      await EmailService.sendOtpEmail(
-        toName: username,
-        toEmail: email,
-        otpCode: otpCode,
-        expiryTime: expiryTime,
-      );
       clearFields();
     } catch (e) {
       FirebaseErrorHandler.handle(e);
