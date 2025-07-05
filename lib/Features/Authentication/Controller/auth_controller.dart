@@ -65,6 +65,92 @@ class AuthController extends GetxController {
     }
   }
 
+  Future<void> loginUser() async {
+    try {
+      isLoading.value = true;
+
+      var email = emailController.text.trim();
+      var pass = passController.text.trim();
+
+      final credential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: pass);
+
+      final uid = credential.user!.uid;
+
+      final doc =
+          await FirebaseFirestore.instance.collection('users').doc(uid).get();
+
+      if (!doc.exists) {
+        throw Exception('User data not found.');
+      }
+
+      final data = doc.data()!;
+      final isVerified = data['isEmailVerified'] ?? false;
+      final status = data['status'] ?? 'Pending';
+      final role = data['role'] ?? 'User';
+
+      if (!isVerified) {
+        OtpController otpController;
+        if (Get.isRegistered<OtpController>()) {
+          otpController = Get.find<OtpController>();
+        } else {
+          otpController = Get.put(OtpController());
+        }
+
+        await otpController.sendOtp(
+          uid: uid,
+          email: email,
+          username: data['username'] ?? 'User',
+        );
+
+        Get.to(() => const OtpVerificationScreen(), arguments: {
+          'uid': uid,
+          'username': data['username'],
+          'email': email,
+        });
+
+        return;
+      }
+
+      // 4. Check Account Status
+      if (status == 'Pending') {
+        Get.dialog(
+          AlertDialog(
+            title: const Text('Account Under Review'),
+            content: const Text('Your account is pending approval.'),
+          ),
+        );
+        return;
+      }
+
+      if (status == 'Rejected') {
+        Get.dialog(
+          AlertDialog(
+            title: const Text('Account Rejected'),
+            content: const Text('Your account has been rejected.'),
+          ),
+        );
+        return;
+      }
+
+      // 5. Navigate Based on Role
+      if (role == 'Admin') {
+        // Get.offAll(() => AdminDashboard());
+      } else if (role == 'HR') {
+        // Get.offAll(() => HRDashboard());
+      } else if (role == 'Client') {
+        // Get.offAll(() => ClientDashboard());
+      } else {
+        // Get.offAll(() => GeneralDashboard());
+      }
+      clearFields();
+    } catch (e) {
+      FirebaseErrorHandler.handle(e);
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
   @override
   void onClose() {
     usernameController.dispose();

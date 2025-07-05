@@ -9,13 +9,13 @@ class OtpVerificationScreen extends StatefulWidget {
 
 class _OtpVerificationScreenState extends State<OtpVerificationScreen>
     with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<Offset> _slideAnimation;
-  late Animation<double> _fadeAnimation;
-  late Animation<Offset> _headerSlide;
-  late Animation<double> _headerFade;
+  late final AnimationController _animationController;
+  late final Animation<Offset> _slideAnimation;
+  late final Animation<double> _fadeAnimation;
+  late final Animation<Offset> _headerSlide;
+  late final Animation<double> _headerFade;
 
-  final OtpController otpController = Get.find();
+  final OtpController otpController = Get.put(OtpController());
 
   late final String uid;
   late final String username;
@@ -73,6 +73,9 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen>
   @override
   void dispose() {
     _animationController.dispose();
+    if (Get.isRegistered<OtpController>()) {
+      Get.delete<OtpController>();
+    }
     super.dispose();
   }
 
@@ -84,10 +87,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen>
         height: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              AppColors.primaryColor,
-              Color(0xff171b41),
-            ],
+            colors: [AppColors.primaryColor, Color(0xff171b41)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -103,10 +103,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen>
                   onPressed: () {
                     Get.offAll(() => Login());
                   },
-                  icon: const FaIcon(
-                    FontAwesomeIcons.arrowLeft,
-                    color: Colors.white,
-                  ),
+                  icon: const FaIcon(FontAwesomeIcons.arrowLeft,
+                      color: Colors.white),
                 ),
               ),
               SizedBox(height: 0.01.sh),
@@ -118,7 +116,6 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen>
                     padding: const EdgeInsets.only(bottom: 30, left: 35),
                     child: Text(
                       'Verify Your Email',
-                      textAlign: TextAlign.left,
                       style: AppTextStyles.headingW.copyWith(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.w600,
@@ -148,7 +145,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen>
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'Enter the 6-digit code sent to your email address.',
+                            'Enter the 6-digit code sent to your email address.\n$email',
                             style: AppTextStyles.subtext,
                             textAlign: TextAlign.center,
                           ),
@@ -177,42 +174,47 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen>
                             onChanged: (_) {},
                           ),
                           SizedBox(height: 0.04.sh),
-                          Obx(
-                            () => otpController.isLoading.value
+                          Obx(() {
+                            return otpController.isLoading.value
                                 ? Lottie.asset(
                                     'assets/animations/newloader.json',
                                     height: 100.h,
                                     width: 100.w,
-                                    fit: BoxFit.contain,
                                   )
                                 : PrimaryBtn(
                                     text: 'Verify OTP',
                                     bgColor: AppColors.primaryColor,
                                     textColor: Colors.white,
                                     onTap: () => otpController.verifyOtp(uid),
-                                  ),
-                          ),
+                                  );
+                          }),
                           SizedBox(height: 20.h),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Didn't receive the code?",
-                                style: AppTextStyles.subtext,
-                              ),
-                              TextButton(
-                                onPressed: () => otpController.sendOtp(
-                                    uid: uid, email: email, username: username),
-                                child: Text(
-                                  'Resend',
-                                  style: AppTextStyles.subtext.copyWith(
-                                    color: AppColors.primaryColor,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )
+                          Obx(() => otpController.resendCooldown.value > 0
+                              ? Text(
+                                  "Resend in ${otpController.resendCooldown.value}",
+                                  style: AppTextStyles.subtext,
+                                )
+                              : Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("Didn't receive the code?",
+                                        style: AppTextStyles.subtext),
+                                    TextButton(
+                                      onPressed: () => otpController.sendOtp(
+                                        uid: uid,
+                                        email: email,
+                                        username: username,
+                                      ),
+                                      child: Text(
+                                        'Resend',
+                                        style: AppTextStyles.subtext.copyWith(
+                                          color: AppColors.primaryColor,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )),
                         ],
                       ),
                     ),

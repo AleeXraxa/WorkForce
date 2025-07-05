@@ -102,8 +102,6 @@ class LoginState extends State<Login> with SingleTickerProviderStateMixin {
                 ),
               ),
               SizedBox(height: 0.01.sh),
-
-              // ✅ Animated Header
               FadeTransition(
                 opacity: _headerFade,
                 child: SlideTransition(
@@ -121,8 +119,6 @@ class LoginState extends State<Login> with SingleTickerProviderStateMixin {
                   ),
                 ),
               ),
-
-              // ✅ Animated Form
               Container(
                 width: double.infinity,
                 height: 0.75.sh,
@@ -186,7 +182,7 @@ class LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                 textColor: Colors.white,
                                 onTap: () {
                                   if (_formKey.currentState!.validate()) {
-                                    Get.snackbar('Success', 'Validated');
+                                    authController.loginUser();
                                   }
                                 },
                               ),
